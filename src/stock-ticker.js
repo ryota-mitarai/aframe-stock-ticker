@@ -17,15 +17,20 @@ AFRAME.registerComponent('stock-chart', {
   init: function () {
     const data = this.data;
 
+    requestData(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
+      this.timeseries = timeseries;
+      data.timeseries = timeseries;
+      this.updateChart();
+    });
+
     //get data on a timer
-    setInterval(
+    setInterval(() => {
       requestData(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
         this.timeseries = timeseries;
         data.timeseries = timeseries;
         this.updateChart();
-      }),
-      data.refreshRate * 1000 * 60
-    );
+      });
+    }, data.refreshRate * 1000 * 60);
   },
 
   updateChart: function () {
