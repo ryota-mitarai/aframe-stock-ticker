@@ -20,6 +20,7 @@ AFRAME.registerComponent('stock-chart', {
     //get data on a timer
     setInterval(
       requestData(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
+        this.timeseries = timeseries;
         data.timeseries = timeseries;
         this.updateChart();
       }),
