@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Example</title>
+    <script>
+      //load the api key (a string) from a file
+      //get an api key for free here:
+      //https://rapidapi.com/twelvedata/api/twelve-data1/pricing
+      fetch('./api_key.json')
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          //store it in the window
+          //required for the component to work
+          window.TWELVE_API_KEY = data.key;
+        });
+    </script>
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="../dist/aframe-stock-ticker.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!--Camera-->
+      <a-entity position="0 1.6 0" camera wasd-controls="acceleration: 15;" look-controls="pointerLockEnabled: false">
+        <a-cursor position="0 0 -.05" scale=".04 .04 1"></a-cursor>
+      </a-entity>
+
+      <!--Stock Tickers-->
+      <a-entity position="0 1 -4" stock-ticker="symbol:ETH/USD; width: 5; height: 2.5;"></a-entity>
+      <a-entity
+        position="-6 1 -4"
+        stock-ticker="symbol:AAPL; interval:1week; length:50; width: 5; height: 2.5;"
+      ></a-entity>
+
+      <!--Environment-->
+      <a-sky color="#aff"></a-sky>
+      <a-plane rotation="-90 0 0" width="16" height="16" color="#3fa841"></a-plane>
+      <a-box position="0 2.5 -8" width="16" height="5" depth=".25" color="#a8413f"></a-box>
+    </a-scene>
+  </body>
+</html>
