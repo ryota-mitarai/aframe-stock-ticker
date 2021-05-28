@@ -12,7 +12,6 @@ AFRAME.registerComponent('stock-chart', {
     enableTitle: { default: true },
     enablePrices: { default: true },
     enableWicks: { default: true },
-    coloredWicks: { default: true },
   },
 
   init: function () {
@@ -86,12 +85,7 @@ AFRAME.registerComponent('stock-chart', {
 
         const wickHeight = scaleToChart(candle.high) - scaleToChart(candle.low);
         wick.setAttribute('height', wickHeight + 0.01); // 0.01 is to avoid texture collisions with the candle
-
-        if (data.coloredWicks == true) {
-          wick.setAttribute('color', color);
-        } else {
-          wick.setAttribute('color', '#000');
-        }
+        wick.setAttribute('color', color);
       }
     });
 
