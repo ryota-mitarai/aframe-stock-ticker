@@ -41,6 +41,6 @@ This probably isn't the best way to handle an API key but I'm not sure how else 
 
 ### Members
 
-| Member     | Description                 | Path                                    |
-| ---------- | --------------------------- | --------------------------------------- |
-| timeseries | the current timeseries data | el.components["stock-chart"].timeseries |
+| Member     | Description                                                             | Path                                    |
+| ---------- | ----------------------------------------------------------------------- | --------------------------------------- |
+| timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["stock-chart"].timeseries |
