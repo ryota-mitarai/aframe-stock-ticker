@@ -1,9 +1,9 @@
 {
   "name": "aframe-stock-ticker",
   "version": "1.0.0",
-  "homepage": "",
-  "description": "",
-  "repository": "",
+  "homepage": "https://github.com/ryota-mitarai/aframe-stock-ticker",
+  "description": "An aframe component for displaying live stock tickers.",
+  "repository": "https://github.com/ryota-mitarai/aframe-stock-ticker.git",
   "author": "ryota-mitarai",
   "license": "MIT",
   "files": [
