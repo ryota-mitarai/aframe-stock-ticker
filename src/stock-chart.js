@@ -15,6 +15,7 @@ AFRAME.registerComponent('stock-chart', {
 
   init: function () {
     const data = this.data;
+    data.lastRefreshPrice;
 
     requestTwelve(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
       this.timeseries = timeseries;
@@ -150,6 +151,18 @@ AFRAME.registerComponent('stock-chart', {
       priceHigh.setAttribute('value', `${Math.round(seriesMax * 100) / 100}`);
       priceHigh.setAttribute('position', `${width} ${height - heightAdj} ${-candleWidth / 2}`);
     }
+
+    //fire event based on price change
+    if (data.lastRefreshPrice !== undefined) {
+      const currentPrice = values[values.length - 1].close;
+      if (currentPrice > data.lastRefreshPrice) {
+        el.emit('price_increase', { name: data.symbol, price: currentPrice, candle: values[values.length - 1] }, true);
+      } else {
+        el.emit('price_decrease', { name: data.symbol, price: currentPrice, candle: values[values.length - 1] }, true);
+      }
+    }
+
+    data.lastRefreshPrice = values[values.length - 1].close;
   },
 });
 

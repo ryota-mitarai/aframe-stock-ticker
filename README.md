@@ -36,6 +36,8 @@ Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as se
 
 ### crypto-chart
 
+#### Properties
+
 | Property         | Description                                                                                                                      | Default    |
 | ---------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------- |
 | id               | id of the target token. Full list available as a JSON [here](https://api.coingecko.com/api/v3/coins/list?include_platform=false) | "Ethereum" |
@@ -50,7 +52,15 @@ Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as se
 | enablePrices     | whether to display the prices on the chart                                                                                       | true       |
 | coloredWicks     | whether to display wicks in the candles                                                                                          | true       |
 
+#### Members
+
+| Member     | Description                                                             | Path                                     |
+| ---------- | ----------------------------------------------------------------------- | ---------------------------------------- |
+| timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["crypto-chart"].timeseries |
+
 ### stock-chart
+
+#### Properties
 
 | Property         | Description                                       | Default |
 | ---------------- | ------------------------------------------------- | ------- |
@@ -67,11 +77,18 @@ Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as se
 | enablePrices     | whether to display the prices on the chart        | true    |
 | coloredWicks     | whether to display wicks in the candles           | true    |
 
-### Members
+#### Members
 
-| Member     | Description                                                             | Path                                                                                |
-| ---------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
-| timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["stock-chart"].timeseries or el.components["crypto-chart"].timeseries |
+| Member     | Description                                                             | Path                                    |
+| ---------- | ----------------------------------------------------------------------- | --------------------------------------- |
+| timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["stock-chart"].timeseries |
+
+## Events
+
+| Event          | Description                                        | Event.detail                                                    |
+| -------------- | -------------------------------------------------- | --------------------------------------------------------------- |
+| price_increase | fired on chart refresh, if the price has increased | {name: asset name, price: current price, candle: latest candle} |
+| price_decrease | fired on chart refresh, if the price has decreased | {name: asset name, price: current price, candle: latest candle} |
 
 <p align="center">
   <a href="https://planetvoodoo.org/" target="_blank">
