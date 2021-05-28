@@ -44,3 +44,11 @@ This probably isn't the best way to handle an API key but I'm not sure how else 
 | Member     | Description                                                             | Path                                    |
 | ---------- | ----------------------------------------------------------------------- | --------------------------------------- |
 | timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["stock-chart"].timeseries |
+
+<p align="center">
+  <a href="https://planetvoodoo.org/" target="_blank">
+    <img width="120px" src="https://planetvoodoo.org/branding/planet-voodoo-logo-1000px.png">
+  </a>
+</p>
+
+<p align="center">This component was developed in partnership with Planet Voodoo® (Voodoo LLC) as part of their 'WebXR Wizardry' initiative.</p>
