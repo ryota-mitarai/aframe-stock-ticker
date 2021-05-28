@@ -10,40 +10,68 @@ An [aframe](https://github.com/aframevr/aframe) component for displaying live st
 
 ## Usage
 
-To create a chart, add the **stock-chart** component.
+### crypto-chart
+
+To create a crypto chart, add the **crypto-chart** component.
 
 ```html
-<a-entity stock-chart="symbol: ETH/USD; interval: 30min; width: 5; height: 2.5;"></a-entity>
+<a-entity crypto-chart="id: ethereum; days: 30; width: 5; height: 2.5;"></a-entity>
 ```
 
-Data is gathered from the [Twelve Data API](https://rapidapi.com/twelvedata/api/twelve-data1). To use this component, you must also supply an API key. An API key can be acquired [here](https://rapidapi.com/twelvedata/api/twelve-data1/pricing) for free, with a limit of 800 requests / day.
+Uses the [Coingecko API](https://www.coingecko.com/en/api#explore-api) to gather data. This API doesn't require an API key, and works out of the box with the code above.
 
-Once you have an API key, set **window.TWELVE_API_KEY** equal to it, as seen at the top of the [example](https://github.com/ryota-mitarai/aframe-stock-ticker/blob/master/examples/index.html).
+### stock-chart
 
-This probably isn't the best way to handle an API key but I'm not sure how else to do it.
+To create a stock chart, add the **stock-chart** component.
 
-### Properties
+```html
+<a-entity stock-chart="symbol: AMC; interval: 30min; length: 100; width: 5; height: 2.5;"></a-entity>
+```
 
-| Property         | Description                                       | Default   |
-| ---------------- | ------------------------------------------------- | --------- |
-| symbol           | symbol of the target asset                        | "ETH/USD" |
-| interval         | chart interval, how long each candle represents   | "15min"   |
-| length           | how many candles to display                       | 100       |
-| width            | width of the chart                                | 4         |
-| height           | height of the chart                               | 2         |
-| refreshRate      | how often to refresh the chart data, in minutes   | 5         |
-|                  |                                                   |           |
-| backgroundColor  | the color of the chart background                 | "#333"    |
-| enableBackground | whether to enable a background behind the candles | true      |
-| enableTitle      | whether to display the ticker name on the chart   | true      |
-| enablePrices     | whether to display the prices on the chart        | true      |
-| coloredWicks     | whether to display wicks in the candles           | true      |
+Uses the [Twelve Data API](https://rapidapi.com/twelvedata/api/twelve-data1) to gather data. This API works for any asset type - stocks, forex, and crypto - but it requires an API key. An API key can be acquired [here](https://rapidapi.com/twelvedata/api/twelve-data1/pricing) for free, with a limit of 800 requests / day.
+
+Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as seen at the top of the [example](https://github.com/ryota-mitarai/aframe-stock-ticker/blob/master/examples/stock/index.html).
+
+## Properties
+
+### crypto-chart
+
+| Property         | Description                                                                                                                      | Default    |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------- | ---------- |
+| id               | id of the target token. Full list available as a JSON [here](https://api.coingecko.com/api/v3/coins/list?include_platform=false) | "Ethereum" |
+| days             | how many days back to display data from. Can only be: 1,7,14,30,90,180,365,max                                                   | 14         |
+| width            | width of the chart                                                                                                               | 4          |
+| height           | height of the chart                                                                                                              | 2          |
+| refreshRate      | how often to refresh the chart data, in minutes                                                                                  | 1          |
+|                  |                                                                                                                                  |            |
+| backgroundColor  | the color of the chart background                                                                                                | "#333"     |
+| enableBackground | whether to enable a background behind the candles                                                                                | true       |
+| enableTitle      | whether to display the ticker name on the chart                                                                                  | true       |
+| enablePrices     | whether to display the prices on the chart                                                                                       | true       |
+| coloredWicks     | whether to display wicks in the candles                                                                                          | true       |
+
+### stock-chart
+
+| Property         | Description                                       | Default |
+| ---------------- | ------------------------------------------------- | ------- |
+| symbol           | symbol of the target asset.                       | "AMC"   |
+| interval         | chart interval, how long each candle represents   | "15min" |
+| length           | how many candles to display                       | 100     |
+| width            | width of the chart                                | 4       |
+| height           | height of the chart                               | 2       |
+| refreshRate      | how often to refresh the chart data, in minutes   | 5       |
+|                  |                                                   |         |
+| backgroundColor  | the color of the chart background                 | "#333"  |
+| enableBackground | whether to enable a background behind the candles | true    |
+| enableTitle      | whether to display the ticker name on the chart   | true    |
+| enablePrices     | whether to display the prices on the chart        | true    |
+| coloredWicks     | whether to display wicks in the candles           | true    |
 
 ### Members
 
-| Member     | Description                                                             | Path                                    |
-| ---------- | ----------------------------------------------------------------------- | --------------------------------------- |
-| timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["stock-chart"].timeseries |
+| Member     | Description                                                             | Path                                                                                |
+| ---------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| timeseries | the current [timeseries](https://twelvedata.com/docs#time-series) data. | el.components["stock-chart"].timeseries or el.components["crypto-chart"].timeseries |
 
 <p align="center">
   <a href="https://planetvoodoo.org/" target="_blank">

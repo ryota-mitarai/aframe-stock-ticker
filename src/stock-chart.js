@@ -1,14 +1,13 @@
-//requires an API key
 AFRAME.registerComponent('stock-chart', {
   schema: {
-    symbol: { default: 'ETH/USD' }, // AAPL, EUR/USD, ETH/BTC, see https://rapidapi.com/twelvedata/api/twelve-data1
-    interval: { default: '15min' }, // see https://rapidapi.com/twelvedata/api/twelve-data1
+    symbol: { default: 'AMC' },
+    interval: { default: '15min' },
     length: { default: 100 },
     refreshRate: { default: 5 }, //updates every x minutes
     width: { default: 4 },
     height: { default: 2 },
-    enableBackground: { default: true },
     backgroundColor: { default: '#333' },
+    enableBackground: { default: true },
     enableTitle: { default: true },
     enablePrices: { default: true },
     enableWicks: { default: true },
@@ -17,7 +16,7 @@ AFRAME.registerComponent('stock-chart', {
   init: function () {
     const data = this.data;
 
-    requestData(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
+    requestTwelve(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
       this.timeseries = timeseries;
       data.timeseries = timeseries;
       this.updateChart();
@@ -25,7 +24,7 @@ AFRAME.registerComponent('stock-chart', {
 
     //get data on a timer
     setInterval(() => {
-      requestData(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
+      requestTwelve(data.symbol, data.interval, data.length, window.TWELVE_API_KEY).then((timeseries) => {
         this.timeseries = timeseries;
         data.timeseries = timeseries;
         this.updateChart();
@@ -144,7 +143,7 @@ AFRAME.registerComponent('stock-chart', {
   },
 });
 
-function requestData(symbol, interval, length, apiKey) {
+function requestTwelve(symbol, interval, length, apiKey) {
   return new Promise((resolve, reject) => {
     fetch(
       `https://twelve-data1.p.rapidapi.com/time_series?symbol=${symbol}&interval=${interval}&outputsize=${length}&format=json`,

@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <title>Example</title>
+    <title>Twelve Example</title>
     <script>
       //load the api key from a file
       fetch('./api_key.json')
@@ -16,7 +16,7 @@
         });
     </script>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="../dist/aframe-stock-ticker.js"></script>
+    <script src="../../dist/aframe-stock-ticker.js"></script>
     <!--<script src="https://unpkg.com/aframe-stock-ticker@1.0.0/dist/aframe-stock-ticker.umd.js"></script>-->
   </head>
   <body>
@@ -27,10 +27,10 @@
       </a-entity>
 
       <!--Stock Tickers-->
-      <a-entity position="0 1 -4" stock-chart="symbol:ETH/USD; width: 5; height: 2.5;"></a-entity>
+      <a-entity position="0 1 -4" stock-chart="useTwelve: true; symbol:ETH/USD; width: 5; height: 2.5;"></a-entity>
       <a-entity
         position="-6 1 -4"
-        stock-chart="symbol:AAPL; interval:1week; length:50; width: 5; height: 2.5;"
+        stock-chart="useTwelve: true; symbol:AAPL; interval:1week; length:50; width: 5; height: 2.5;"
       ></a-entity>
 
       <!--Environment-->

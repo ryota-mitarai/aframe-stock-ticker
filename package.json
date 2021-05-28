@@ -9,7 +9,7 @@
   "files": [
     "dist/*.js*"
   ],
-  "source": "src/stock-ticker.js",
+  "source": "src/export.js",
   "main": "dist/aframe-stock-ticker.js",
   "exports": "dist/aframe-stock-ticker.modern.js",
   "module": "dist/aframe-stock-ticker.module.js",
