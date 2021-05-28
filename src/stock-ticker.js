@@ -1,5 +1,5 @@
 //requires an API key
-AFRAME.registerComponent('stock-ticker', {
+AFRAME.registerComponent('stock-chart', {
   schema: {
     symbol: { default: 'ETH/USD' }, // AAPL, EUR/USD, ETH/BTC, see https://rapidapi.com/twelvedata/api/twelve-data1
     interval: { default: '15min' }, // see https://rapidapi.com/twelvedata/api/twelve-data1
