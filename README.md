@@ -30,7 +30,7 @@ To create a stock chart, add the **stock-chart** component.
 
 Uses the [Twelve Data API](https://rapidapi.com/twelvedata/api/twelve-data1) to gather data. This API works for any asset type - stocks, forex, and crypto - but it requires an API key. An API key can be acquired [here](https://rapidapi.com/twelvedata/api/twelve-data1/pricing) for free, with a limit of 800 requests / day.
 
-Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as seen at the top of the [example](https://github.com/ryota-mitarai/aframe-stock-ticker/blob/master/examples/stock/index.html).
+Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as seen at the top of the [example](https://github.com/ryota-mitarai/aframe-stock-ticker/blob/master/examples/stock-chart/index.html).
 
 ## Properties
 
