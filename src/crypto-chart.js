@@ -77,20 +77,30 @@ AFRAME.registerComponent('crypto-chart', {
       const y = scaleToChart(candle.open) + heightAdj;
       bar.setAttribute('position', `${x} ${y} 0`);
 
-      const color = candleHeight < 0 ? '#f44' : '#4f4';
+      const color = candleHeight < 0 ? '#4f4' : '#f44';
       bar.setAttribute('color', color);
 
-      //create wick
+      //create wicks
       if (data.enableWicks == true) {
-        const wick = document.createElement('a-box');
-        bar.appendChild(wick);
+        const wickHigh = document.createElement('a-box');
+        bar.appendChild(wickHigh);
+        wickHigh.setAttribute('width', candleWidth / 5);
+        wickHigh.setAttribute('depth', candleWidth / 5);
 
-        wick.setAttribute('width', candleWidth / 5);
-        wick.setAttribute('depth', candleWidth / 5);
+        const wickHighHeight = Math.abs(scaleToChart(candle.high) - scaleToChart(candle.open)) / 2;
+        wickHigh.setAttribute('height', wickHighHeight);
+        wickHigh.setAttribute('color', color);
+        wickHigh.setAttribute('position', `0 ${wickHighHeight / 2} 0`);
 
-        const wickHeight = scaleToChart(candle.high) - scaleToChart(candle.low);
-        wick.setAttribute('height', wickHeight + 0.01); // 0.01 is to avoid texture collisions with the candle
-        wick.setAttribute('color', color);
+        const wickLow = document.createElement('a-box');
+        bar.appendChild(wickLow);
+        wickLow.setAttribute('width', candleWidth / 5);
+        wickLow.setAttribute('depth', candleWidth / 5);
+
+        const wickLowHeight = Math.abs(scaleToChart(candle.low) - scaleToChart(candle.open)) / 2;
+        wickLow.setAttribute('height', wickLowHeight);
+        wickLow.setAttribute('color', color);
+        wickLow.setAttribute('position', `0 ${wickLowHeight / -2} 0`);
       }
     });
 
