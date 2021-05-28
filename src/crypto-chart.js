@@ -2,7 +2,7 @@ AFRAME.registerComponent('crypto-chart', {
   schema: {
     id: { default: 'Ethereum' }, //see '/coins/list' https://www.coingecko.com/en/api#explore-api
     days: { default: 14 }, //1,7,14,30,90,180,365,max
-    refreshRate: { default: 1 }, //updates every x minutes
+    refreshRate: { default: 30 },
     width: { default: 4 },
     height: { default: 2 },
     backgroundColor: { default: '#333' },
@@ -29,7 +29,7 @@ AFRAME.registerComponent('crypto-chart', {
         data.timeseries = timeseries;
         this.updateChart();
       });
-    }, data.refreshRate * 1000 * 60);
+    }, data.refreshRate * 1000);
   },
 
   updateChart: function () {

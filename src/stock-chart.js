@@ -3,7 +3,7 @@ AFRAME.registerComponent('stock-chart', {
     symbol: { default: 'AMC' },
     interval: { default: '15min' },
     length: { default: 100 },
-    refreshRate: { default: 5 }, //updates every x minutes
+    refreshRate: { default: 30 },
     width: { default: 4 },
     height: { default: 2 },
     backgroundColor: { default: '#333' },
@@ -30,7 +30,7 @@ AFRAME.registerComponent('stock-chart', {
         data.timeseries = timeseries;
         this.updateChart();
       });
-    }, data.refreshRate * 1000 * 60);
+    }, data.refreshRate * 1000);
   },
 
   updateChart: function () {

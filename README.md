@@ -44,7 +44,7 @@ Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as se
 | days             | how many days back to display data from. Can only be: 1,7,14,30,90,180,365,max                                                   | 14         |
 | width            | width of the chart                                                                                                               | 4          |
 | height           | height of the chart                                                                                                              | 2          |
-| refreshRate      | how often to refresh the chart data, in minutes                                                                                  | 1          |
+| refreshRate      | how often to refresh the chart data, in seconds                                                                                  | 30         |
 |                  |                                                                                                                                  |            |
 | backgroundColor  | the color of the chart background                                                                                                | "#333"     |
 | enableBackground | whether to enable a background behind the candles                                                                                | true       |
@@ -69,7 +69,7 @@ Once you have a Twelve API key, set **window.TWELVE_API_KEY** equal to it, as se
 | length           | how many candles to display                       | 100     |
 | width            | width of the chart                                | 4       |
 | height           | height of the chart                               | 2       |
-| refreshRate      | how often to refresh the chart data, in minutes   | 5       |
+| refreshRate      | how often to refresh the chart data, in seconds   | 30      |
 |                  |                                                   |         |
 | backgroundColor  | the color of the chart background                 | "#333"  |
 | enableBackground | whether to enable a background behind the candles | true    |
